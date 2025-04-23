@@ -1,14 +1,14 @@
 import './App.css'
-import locationServices from '../../Services/LocationServices'
-import { LocationInfo } from '../LocationInfo/LocationInfo';
+import locationServices from '../../../Services/LocationServices'
+import { LocationInfo } from '../../LocationArea/LocationInfo/LocationInfo';
 import { ChangeEvent, useState } from 'react';
-import CoordinatesModel from '../../Models/CoordinatsModel';
+import CoordinatesModel from '../../../Models/CoordinatsModel';
 
 function App() {
   const [inputVal, setInputVal] = useState(""); 
-  const [coordinates, setCoordinates] = useState<CoordinatesModel>();
-  const [popularSearch, setPopularSearch] = useState<CoordinatesModel>();
-  const [popularSearchList, setPopularSearchList] = useState<CoordinatesModel[]>();
+  const [coordinates, setCoordinates] = useState<CoordinatesModel>(new CoordinatesModel());
+  const [popularSearch, setPopularSearch] = useState<CoordinatesModel>(new CoordinatesModel());
+  const [popularSearchList, setPopularSearchList] = useState<CoordinatesModel[]>([]);
   const [isDisplay, setIsDisplay] = useState<boolean>(false);
 
   const handleClick = async () => {

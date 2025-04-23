@@ -13,15 +13,12 @@ class LocationServices {
     public async getPopularSearch():Promise<CoordinatesModel>{
         const response = await axios.get<CoordinatesModel>(appConfig.popularSearchUrl); 
         const popularSearch = response.data; 
-        console.log(popularSearch);
-        
         return popularSearch;
     }
     
     public async getPopularSearchList():Promise<CoordinatesModel[]>{
         const response = await axios.get<CoordinatesModel[]>(appConfig.popularSearchListUrl); 
         const popularSearchList = response.data; 
-        console.log(popularSearchList); 
         return popularSearchList; 
     }
 }

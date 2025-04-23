@@ -1,0 +1,66 @@
+.LocationInfo {
+	display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #353535f1;
+    color: white;
+    button {
+        position: absolute;
+        top: 40px;
+        left: 20px;
+        padding: 7px 35px;
+        border: unset;
+        border-radius: 5px;
+        background-color: #6C63FF;
+        color: white;
+        cursor: pointer;
+    
+    }
+}
+/* .locationInfo-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+.flexContainer {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    margin: 0 20px;
+    text-align: start;
+}
+
+.address-coordinates, .popular-address{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popular-address {
+    align-items: start;
+}
+@media (min-width: 850px) {
+    .locationInfo-content {
+        height: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+    
+    }
+    
+    .top-five {
+        grid-area: span 2/2;
+        display: flex;
+        align-items: start;
+    
+    }
+    .popular-address{
+        grid-area: 2;
+    }
+    
+}

@@ -6,20 +6,12 @@ export function PopularDetails(props:{popular:CoordinatesModel}) {
     return (
         <div className="PopularDetails">
 			<p>
-                <span>
-                {address}
-                </span>
-                <span>
-                כתובת
-                </span>
+                <span>{address}</span>
+                <span>כתובת</span>
             </p>
             <p>
-                <span>
-                {hits}    
-                </span>
-                <span>
-                בקשות 
-                </span>
+                <span>{hits}</span>
+                <span>בקשות </span>
             </p>
         </div>
     );

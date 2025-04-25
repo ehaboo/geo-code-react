@@ -1,15 +1,14 @@
 .LocationInfo {
 	display: none;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
     background-color: #353535f1;
     color: white;
     button {
         position: absolute;
-        top: 40px;
+        top: 30px;
         left: 20px;
         padding: 7px 35px;
         border: unset;
@@ -17,50 +16,53 @@
         background-color: #6C63FF;
         color: white;
         cursor: pointer;
-    
     }
 }
-/* .locationInfo-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-} */
-.flexContainer {
-    width: 400px;
+
+.locationInfo-content {
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    padding: 20px;
-    margin: 0 20px;
-    text-align: start;
-}
-
-.address-coordinates, .popular-address{
-    display: flex;
     justify-content: center;
     align-items: center;
+    gap: 25px;
+    margin: 65px 0;
 }
 
-.popular-address {
-    align-items: start;
+h3 {
+    font-size: 22px;
+    font-weight:lighter;
+    margin-top: 0;
+    span:first-of-type {
+        margin: 0 20px;
+    }
+
+    span:last-of-type {
+        font-weight: 700;
+    }
 }
-@media (min-width: 850px) {
-    .locationInfo-content {
+
+@media (min-width: 730px) {
+    .LocationInfo {
         height: 100%;
+        position: fixed;
+    }
+
+    .locationInfo-content {
+        max-width: 1200px;
+        margin: 100px auto;
+        padding: 30px;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(2, 1fr);
-    
     }
     
     .top-five {
+        /* margin-right: 100px; */
         grid-area: span 2/2;
-        display: flex;
-        align-items: start;
-    
     }
     .popular-address{
         grid-area: 2;
+        
     }
     
 }

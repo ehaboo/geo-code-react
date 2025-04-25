@@ -1,5 +1,9 @@
-.TopFive {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+
+
+@media (min-width: 730px) {
+    .TopFive {
+        margin-top: -75px;
+
+    }
+    
 }

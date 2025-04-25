@@ -10,7 +10,9 @@ export function TopFive(props:TopFiveProps) {
     return (
         <div className="TopFive">
 			<h3>רשימת 5 החיפושים הפופולריים</h3>
+            <div>
             {popularSearchList.map(p => <PopularDetails key={p.id} popular={p}/>)}
+            </div>
         </div>
     );
 }

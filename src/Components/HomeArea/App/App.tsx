@@ -1,29 +1,19 @@
 import './App.css'
-import locationServices from '../../../Services/LocationServices'
 import { LocationInfo } from '../../LocationArea/LocationInfo/LocationInfo';
-import { ChangeEvent, useState } from 'react';
-import CoordinatesModel from '../../../Models/CoordinatsModel';
+import { ChangeEvent, SyntheticEvent, useState } from 'react';
+import notifyService from '../../../Services/NotifyService';
 
 function App() {
   const [inputVal, setInputVal] = useState(""); 
-  const [coordinates, setCoordinates] = useState<CoordinatesModel>(new CoordinatesModel());
-  const [popularSearch, setPopularSearch] = useState<CoordinatesModel>(new CoordinatesModel());
-  const [popularSearchList, setPopularSearchList] = useState<CoordinatesModel[]>([]);
   const [isDisplay, setIsDisplay] = useState<boolean>(false);
+  
 
-  const handleClick = async () => {
-   try {
-    const dbCoordinates = await locationServices.getCoordinats(inputVal); 
-    setCoordinates(dbCoordinates); 
-    const dbPopularSearch = await locationServices.getPopularSearch();
-    setPopularSearch(dbPopularSearch);
-    const dbPopularSearchList = await locationServices.getPopularSearchList();
-    setPopularSearchList(dbPopularSearchList)
-
+  const handleSubmit = async (e:SyntheticEvent) => {
+   try {    
+    e.preventDefault()
     setIsDisplay(true);
-    setInputVal("");
-   } catch (error) {
-      console.log(error);
+   } catch (error:unknown) {
+      notifyService.error(error)
    }
   }
 
@@ -34,18 +24,18 @@ function App() {
 
   return (
     <>
-      <LocationInfo coordinates={coordinates} popularSearch={popularSearch} popularSearchList={popularSearchList} isDisplay={isDisplay} setDisplay={setIsDisplay} />
+      {isDisplay && <LocationInfo inputVal={inputVal} clearInput={setInputVal} isDisplay={isDisplay} setDisplay={setIsDisplay} />}
       <div className="App">
-        <div className='container'>
+        <form className='container' onSubmit={handleSubmit}>
           <label>
             כתובת
           </label>
-          <input type="text" value={inputVal} onChange={handleChange} />
+          <input type="text" value={inputVal} onChange={handleChange} required/>
           <hr />
-          <button onClick={handleClick}>
+          <button>
             הצג את הקואורדינטות
           </button>
-        </div>
+        </form>
       </div>
     </>
   )

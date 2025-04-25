@@ -1,9 +1,9 @@
 class CoordinatesModel {
-    id:number; 
-    address:string; 
-    lat:number; 
-    lng:number; 
-    hits:number; 
+    public id:number; 
+    public address:string; 
+    public lat:number; 
+    public lng:number; 
+    public hits:number; 
 
 }
 

@@ -5,8 +5,12 @@
     }
 }
 
-.coorValue{
+.coorValue {
     font-size: 32px;
-    color: #6C63FF;
+    color: var(--third-font-color);
     font-weight: 900;
+}
+
+.noCoord {
+    text-align: center;
 }

@@ -1,11 +1,12 @@
 .LocationInfo {
-	display: none;
+    display: none;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     background-color: #353535f1;
-    color: white;
+    color: var(--secondary-font-color);
+
     button {
         position: absolute;
         top: 30px;
@@ -13,8 +14,8 @@
         padding: 7px 35px;
         border: unset;
         border-radius: 5px;
-        background-color: #6C63FF;
-        color: white;
+        background-color: var(--secondary-btn-bg);
+        color: var(--btn-font-color);
         cursor: pointer;
     }
 }
@@ -30,8 +31,9 @@
 
 h3 {
     font-size: 22px;
-    font-weight:lighter;
+    font-weight: lighter;
     margin-top: 0;
+
     span:first-of-type {
         margin: 0 20px;
     }
@@ -55,14 +57,12 @@ h3 {
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(2, 1fr);
     }
-    
+
     .top-five {
-        /* margin-right: 100px; */
         grid-area: span 2/2;
     }
-    .popular-address{
+
+    .popular-address {
         grid-area: 2;
-        
     }
-    
 }

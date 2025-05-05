@@ -1,10 +1,5 @@
-.PopularAddress {
-	
-}
-
-
 .hitsVal {
     font-size: 32px;
-    color: #6C63FF;
+    color: var(--third-font-color);
     margin-left: 7px;
 }

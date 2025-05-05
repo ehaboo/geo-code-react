@@ -1,9 +1,7 @@
-import { AxiosError } from 'axios';
+import { AxiosError } from "axios";
 import { Store } from "react-notifications-component";
 
-
 class NotifyService {
-
   public success(message: string) {
     Store.addNotification({
       message,
@@ -15,67 +13,69 @@ class NotifyService {
       dismiss: {
         duration: 3000,
         onScreen: true,
-      }
+      },
     });
   }
 
   public error(error: unknown) {
     const message = this.extractMessage(error);
     Store.addNotification({
-      title: "Error!",
+      title: "שגיאה!",
       message,
       type: "danger",
       insert: "top",
-      container: "bottom-left",
+      container: "center",
       animationIn: ["animate__animated", "animate__fadeIn"],
       animationOut: ["animate__animated", "animate__fadeOut"],
       dismiss: {
         duration: 3000,
         onScreen: true,
-      }
+      },
     });
   }
 
-
   private extractMessage(error: unknown): string {
-    
     if (typeof error === "string") return error;
 
     if (this.isAxiosError(error)) {
-        const axiosError = error as AxiosError;
-        if (axiosError.message === 'Network Error') return "Network error. Please check your internet connection.";
-        if (axiosError.code === 'ECONNABORTED') return "The request took too long to complete. Please try again later.";
-        if (!axiosError.response) return "No response from server. Please try again later.";
+      const axiosError = error as AxiosError;
 
-        const status = axiosError.response?.status;
-        const data = axiosError.response?.data;
+      if (axiosError.message === "Network Error")
+        return "שגיאת רשת - נא לבדוק את חיבור האינטרנט.";
+      if (axiosError.code === "ECONNABORTED")
+        return "הבקשה ארכה זמן רב מדי - נא לנסות שוב מאוחר יותר.";
+      if (!axiosError.response)
+        return "לא התקבלה תגובה מהשרת - נא לנסות שוב מאוחר יותר.";
 
-        const statusMessages: Record<number, string> = {
-          401: "Please login again.",
-          403: "You do not have permission to access this resource.",
-          500: "Server error. Please try again later.",
-        };
-        if (status && statusMessages[status]) return statusMessages[status];
-        if (typeof data === "string") return data;
-        if (typeof data === "object" && "message" in data) return String(data.message);
-        if (Array.isArray(data)) return String(data[0]);
+      const status = axiosError.response?.status;
+      const data = axiosError.response?.data;
 
-        return `HTTP Error ${axiosError.response?.status}`;
+      const statusMessages: Record<number, string> = {
+        401: "נא להתחבר מחדש",
+        403: "אין לך הרשאה לגשת למשאב זה.",
+        404: "לא נמצאה כתובת כזו.",
+        500: "שגיאת שרת, אנא נסה מאוחר יותר",
+      };
+      if (status && statusMessages[status]) return statusMessages[status];
+      if (typeof data === "string") return data;
+      if (typeof data === "object" && "message" in data)
+        return String(data.message);
+      if (Array.isArray(data)) return String(data[0]);
+
+      return `HTTP Error ${axiosError.response?.status}`;
     }
 
     if (error instanceof Error) return `Unexpected error: ${error.message}`;
 
-    return "Something went wrong...";
+    return "אירעה שגיאה לא צפויה...";
   }
 
-
-  private isAxiosError(error:unknown): error is AxiosError {
-    return typeof error === "object" && 
-            error !== null &&
-            "isAxiosError" in error;
-  } 
-
+  private isAxiosError(error: unknown): error is AxiosError {
+    return (
+      typeof error === "object" && error !== null && "isAxiosError" in error
+    );
+  }
 }
 
 const notifyService = new NotifyService();
-export default notifyService
+export default notifyService;

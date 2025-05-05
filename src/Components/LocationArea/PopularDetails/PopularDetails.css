@@ -6,29 +6,25 @@
     border: 1px solid #353535;
     border-radius: 15px;
     width: 300px;
-    background-color:#353535 ;
+    background-color: #353535;
     margin-bottom: 7px;
+
     p {
         margin: 5px 0;
-
     }
 
-    p > span:first-of-type {
+    p>span:first-of-type {
         display: block;
         font-size: 16px;
         margin-bottom: -5px;
     }
-    
-    p > span:last-of-type{
+
+    p>span:last-of-type {
         font-size: 12px;
-        color: #6C63FF;
+        color: var(--third-font-color);
     }
-    
-    p:last-of-type{
+
+    p:last-of-type {
         text-align: center;
     }
-    
 }
-
-
-

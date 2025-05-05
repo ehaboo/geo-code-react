@@ -1,11 +1,6 @@
-
-class Config { 
-
-    public coordinatesUrl = "http://localhost:5000/api/coordinates"; 
-    public popularSearchUrl = "http://localhost:5000/api/popular-search"; 
-    public popularSearchListUrl = "http://localhost:5000/api/popular-search-list"; 
+class Config {
+  public apiUrl = "http://localhost:8001/api";
 }
 
-
-const appConfig = new Config(); 
-export default appConfig; 
+const appConfig = new Config();
+export default appConfig;
